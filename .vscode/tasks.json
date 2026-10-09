@@ -1,0 +1,71 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "gcc build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c17",
+                "-I", "${workspaceFolder}/include",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "编译当前 C 文件（Ctrl+Shift+B）"
+        },
+        {
+            "label": "gcc build all",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "-Wall",
+                "-Wextra",
+                "-std=c17",
+                "-I", "${workspaceFolder}/include",
+                "${workspaceFolder}/src/*.c",
+                "-o",
+                "${workspaceFolder}/build/main.exe"
+            ],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "编译 src 下所有 .c 文件"
+        },
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make",
+            "args": ["-C", "${workspaceFolder}"],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+            "detail": "使用 Makefile 构建"
+        },
+        {
+            "label": "make clean",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean", "-C", "${workspaceFolder}"],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "清理构建产物"
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "dependsOn": "gcc build",
+            "group": "test",
+            "problemMatcher": [],
+            "detail": "编译并运行当前文件"
+        }
+    ]
+}

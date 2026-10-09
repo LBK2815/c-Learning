@@ -1,0 +1,21 @@
+# 编译产物
+*.o
+*.obj
+*.exe
+build/
+
+# VS Code（只忽略用户专属文件，共享配置保留）
+.vscode/settings.json
+.vscode/launch.local.json
+.vscode/.browse.c_cpp.db*
+
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
